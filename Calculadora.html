@@ -91,32 +91,36 @@
     </div>
   </div>
   <script>
-    function insert(num)
-    {
-        var numero = document.getElementById('resultado').innerHTML
-        document.getElementById('resultado').innerHTML = numero + num
+   
+var inputArray = [];
+
+function insert(num) {
+    inputArray.push(num);
+    var resultado = document.getElementById('resultado');
+    resultado.innerHTML = inputArray.join('');
+}
+
+function clean() {
+    inputArray = [];
+    document.getElementById('resultado').innerHTML = "";
+}
+
+function back() {
+    inputArray.pop();
+    var resultado = document.getElementById('resultado');
+    resultado.innerHTML = inputArray.join('');
+}
+
+function calcular() {
+    var resultado = document.getElementById('resultado');
+    if (inputArray.length > 0) {
+        var expression = inputArray.join('');
+        resultado.innerHTML = eval(expression);
+    } else {
+        resultado.innerHTML = "nada...";
     }
-    function clean()
-    {
-        document.getElementById('resultado').innerHTML = "";
-    }
-    function back()
-    {
-        var resultado = document.getElementById('resultado').innerHTML;
-        document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length -1);
-    }
-    function calcular()
-    {
-        var resultado = document.getElementById('resultado').innerHTML
-        if(resultado)
-        {
-            document.getElementById('resultado').innerHTML = eval(resultado);
-        }
-        else
-        {
-            document.getElementById('resultado').innerHTML = "nada..."
-        }
-    }
+}
+
   </script>
 </body>
 </html>
